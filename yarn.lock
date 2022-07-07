@@ -1816,7 +1816,7 @@
   dependencies:
     "find-up" "^5.0.0"
 
-"tailwindcss@*", "tailwindcss@^3.1.2":
+"tailwindcss@*", "tailwindcss@^3.1.4":
   "integrity" "sha512-NrxbFV4tYsga/hpWbRyUfIaBrNMXDxx5BsHgBS4v5tlyjf+sDsgBg5m9OxjrXIqAS/uR9kicxLKP+bEHI7BSeQ=="
   "resolved" "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.1.4.tgz"
   "version" "3.1.4"
