@@ -22,7 +22,7 @@ const Home: NextPage<Props> = ({ posts }: Props) => {
 			<Hero />
 			{posts.map(({ _id, slug: { current } }) => (
 				<Link key={_id} href={`posts/${current}`}>
-					<a>hola</a>
+					<a>hola!</a>
 				</Link>
 			))}
 		</Layout>
