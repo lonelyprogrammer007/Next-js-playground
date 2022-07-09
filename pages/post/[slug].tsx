@@ -7,59 +7,34 @@ type Props = {
 }
 
 const PostComponent = ({ post }: Props) => {
-	console.log(post)
 	return <div>Post</div>
 }
 
 export default PostComponent
 
 export const getStaticPaths = async () => {
-	const query = `*[_type == "post"] {
-		_id,
-		slug
-	  }`
-	const posts = await client.fetch(query)
-	const paths = posts.map((post: Post) => ({
-		params: {
-			slug: post.slug.current,
-		},
-	}))
+	/*
+	TODO: leer esto https://www.sanity.io/docs/getting-started
+	para poder entender el query de abajo y despues comparar esta
+	version con la del commit anterior
+	*/
+	const paths = await client.fetch(
+		`*[_type == "post" && defined(slug.current)][].slug.current`
+	)
+
 	return {
 		paths,
 		fallback: 'blocking',
 	}
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-	const query = `*[_type == "post" && slug.current == $slug][0] {
-		_id,
-		_createdAt,
-		title,
-		author -> {
-			name,
-			image
-		},
-		'comments': *[
-			_type == "comment" &&
-			post._ref == ^._id &&
-			approved == true
-		],
-		description,
-		mainImage,
-		slug,
-		body
-	}`
-
-	const post = await client.fetch(query, {
-		slug: params?.slug,
-	})
-
-	if (!post) {
-		return {
-			notFound: true,
-		}
-	}
-
+export const getStaticProps: GetStaticProps = async (context: any) => {
+	// It's important to default the slug so that it doesn't return "undefined"
+	const { slug = '' } = context.params
+	const post = await client.fetch(
+		`*[_type == "post" && slug.current == $slug][0]`,
+		{ slug }
+	)
 	return {
 		props: {
 			post,
