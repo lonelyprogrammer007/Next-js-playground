@@ -1,0 +1,21 @@
+.hero {
+	@apply flex items-center justify-between border-y border-black bg-yellow-400 py-10 lg:py-8;
+}
+.hero__message-container {
+	@apply space-y-5 px-10;
+}
+.hero__text {
+	@apply max-w-xl font-serif text-6xl;
+}
+.hero__text--underline {
+	@apply underline decoration-black decoration-4;
+}
+.hero__text--small {
+	@apply text-xl;
+}
+.hero__logo-container {
+	@apply hidden md:block;
+}
+.hero__logo {
+	@apply hidden w-32 md:inline-flex lg:w-full;
+}

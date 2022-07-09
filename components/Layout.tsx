@@ -1,13 +1,11 @@
-import { ReactNode } from "react"
+import { ReactNode } from 'react'
 
 type Props = {
-  children: ReactNode
+	children: ReactNode
 }
 
 const Layout = ({ children }: Props) => {
-  return (
-    <div>{children}</div>
-  )
+	return <div className='mx-auto max-w-7xl'>{children}</div>
 }
 
 export default Layout

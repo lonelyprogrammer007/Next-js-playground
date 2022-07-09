@@ -38,3 +38,5 @@ yarn-error.log*
 *.tsbuildinfo
 
 .vscode
+.swc
+sanity-medium-blog/node_modules

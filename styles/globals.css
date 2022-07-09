@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('header.css');
+@import url('hero.css');
+
+.test {
+	border: 1px solid red;
+}
